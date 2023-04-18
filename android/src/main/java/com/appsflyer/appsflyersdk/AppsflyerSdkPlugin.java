@@ -229,6 +229,9 @@ public class AppsflyerSdkPlugin implements MethodCallHandler, FlutterPlugin, Act
             case "setCustomerUserId":
                 setCustomerUserId(call, result);
                 break;
+            case "getCustomerUserId":
+                getCustomerUserId(result);
+                break;
             case "setCustomerIdAndLogSession":
                 setCustomerIdAndLogSession(call, result);
                 break;
@@ -665,6 +668,10 @@ public class AppsflyerSdkPlugin implements MethodCallHandler, FlutterPlugin, Act
         String userId = (String) call.argument("id");
         AppsFlyerLib.getInstance().setCustomerUserId(userId);
         result.success(null);
+    }
+
+    private void getCustomerUserId(Result result) {
+        result.success(AppsFlyerProperties.getInstance().getString(AppsFlyerProperties.APP_USER_ID));
     }
 
     private void setCustomerIdAndLogSession(MethodCall call, Result result) {

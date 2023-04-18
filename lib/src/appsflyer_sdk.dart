@@ -239,6 +239,10 @@ class AppsflyerSdk {
     _methodChannel.invokeMethod("setCustomerUserId", {'id': id});
   }
 
+  Future<String?> getCustomerUserId() async {
+    return await _methodChannel.invokeMethod("getCustomerUserId");
+  }
+
   void setIsUpdate(bool isUpdate) {
     _methodChannel.invokeMethod("setIsUpdate", {'isUpdate': isUpdate});
   }
@@ -288,7 +292,8 @@ class AppsflyerSdk {
 
   ///Adds array of keys, which are used to compose key path to resolve deeplink from push notification payload.
   void addPushNotificationDeepLinkPath(List<String> deeplinkPath) {
-    _methodChannel.invokeMethod("addPushNotificationDeepLinkPath", deeplinkPath);
+    _methodChannel.invokeMethod(
+        "addPushNotificationDeepLinkPath", deeplinkPath);
   }
 
   Future<dynamic> validateAndLogInAppAndroidPurchase(
